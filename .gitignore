@@ -1,0 +1,11 @@
+#Layout y depend
+*.depend
+*.layout
+
+#Ficheros .sol
+*.sol
+
+#Ejecutables
+*.lin
+
+*.DS_Store
