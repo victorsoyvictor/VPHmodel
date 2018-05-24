@@ -8,4 +8,9 @@
 #Ejecutables
 *.lin
 
+#Fichero de MACOS
 *.DS_Store
+
+#Directorios release y debug
+/Release*
+/Debug*
