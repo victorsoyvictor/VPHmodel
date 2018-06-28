@@ -85,30 +85,30 @@ enum EVENTO_CONTABLE
 	C_TOTALINDIVIDUOS_M_ONCOGENICO,
 	C_TOTALINDIVIDUOS_H,
 	C_TOTALINDIVIDUOS_M,
-	C_INFECTADO_16_18,
-	C_INFECTADO_16_18_H,
-	C_INFECTADO_16_18_M,
-	C_INFECTADO_16_18_H_HOMO,
-	C_INFECTADO_6_11,
-	C_INFECTADO_6_11_H,
-	C_INFECTADO_6_11_M,
-	C_INFECTADO_6_11_H_HOMO,
-	C_INFECTADO_16_18_6_11,
-	C_INFECTADO_16_18_6_11_H,
-	C_INFECTADO_16_18_6_11_M,
-	C_INFECTADO_16_18_6_11_H_HOMO,
-	C_INFECTADO_VACUNADO_16_18,
-	C_INFECTADO_VACUNADO_16_18_H,
-	C_INFECTADO_VACUNADO_16_18_M,
-	C_INFECTADO_VACUNADO_16_18_H_HOMO,
-	C_INFECTADO_VACUNADO_6_11,
-	C_INFECTADO_VACUNADO_6_11_H,
-	C_INFECTADO_VACUNADO_6_11_M,
-	C_INFECTADO_VACUNADO_6_11_H_HOMO,
-	C_INFECTADO_VACUNADO_16_18_6_11,
-	C_INFECTADO_VACUNADO_16_18_6_11_H,
-	C_INFECTADO_VACUNADO_16_18_6_11_M,
-	C_INFECTADO_VACUNADO_16_18_6_11_H_HOMO,
+	C_INFECTADO_HR,
+	C_INFECTADO_HR_H,
+	C_INFECTADO_HR_M,
+	C_INFECTADO_HR_H_HOMO,
+	C_INFECTADO_LR,
+	C_INFECTADO_LR_H,
+	C_INFECTADO_LR_M,
+	C_INFECTADO_LR_H_HOMO,
+	C_INFECTADO_HR_LR,
+	C_INFECTADO_HR_LR_H,
+	C_INFECTADO_HR_LR_M,
+	C_INFECTADO_HR_LR_H_HOMO,
+	C_INFECTADO_VACUNADO_HR,
+	C_INFECTADO_VACUNADO_HR_H,
+	C_INFECTADO_VACUNADO_HR_M,
+	C_INFECTADO_VACUNADO_HR_H_HOMO,
+	C_INFECTADO_VACUNADO_LR,
+	C_INFECTADO_VACUNADO_LR_H,
+	C_INFECTADO_VACUNADO_LR_M,
+	C_INFECTADO_VACUNADO_LR_H_HOMO,
+	C_INFECTADO_VACUNADO_HR_LR,
+	C_INFECTADO_VACUNADO_HR_LR_H,
+	C_INFECTADO_VACUNADO_HR_LR_M,
+	C_INFECTADO_VACUNADO_HR_LR_H_HOMO,
 	C_VACUNADOS_HOMO,
 	C_VACUNADOS_HOMBRES,
 	C_VACUNADOS_MUJERES
@@ -124,24 +124,24 @@ public:
     unsigned int m_turnos_a_simular;
     unsigned int m_realizaciones;
     unsigned int m_numero_de_nodos;
-    BASE_TYPE    m_grado_medio; //M
+    BASE_TYPE m_grado_medio; //M
     unsigned int m_T_desplazado;
-    BASE_TYPE    m_T0; //T1 Es el parametro desconocido
-    BASE_TYPE    m_T1; //T1 Es el parametro desconocido
-    BASE_TYPE    m_T2; //T2 Es el parametro desconocido
-    BASE_TYPE    m_T3; //T3 Es el parametro desconocido
-    BASE_TYPE    m_14_17__HR;
-    BASE_TYPE    m_14_17__LR;
-    BASE_TYPE    m_14_17__AMBOS;
-    BASE_TYPE    m_18_29__HR;
-    BASE_TYPE    m_18_29__LR;
-    BASE_TYPE    m_18_29__AMBOS;
-    BASE_TYPE    m_30_39__HR;
-    BASE_TYPE    m_30_39__LR;
-    BASE_TYPE    m_30_39__AMBOS;
-    BASE_TYPE    m_40_65__HR;
-    BASE_TYPE    m_40_65__LR;
-    BASE_TYPE    m_40_65__AMBOS;
+    BASE_TYPE m_T0; //T1 Es el parametro desconocido
+    BASE_TYPE m_T1; //T1 Es el parametro desconocido
+    BASE_TYPE m_T2; //T2 Es el parametro desconocido
+    BASE_TYPE m_T3; //T3 Es el parametro desconocido
+    BASE_TYPE m_14_17__HR;
+    BASE_TYPE m_14_17__LR;
+    BASE_TYPE m_14_17__AMBOS;
+    BASE_TYPE m_18_29__HR;
+    BASE_TYPE m_18_29__LR;
+    BASE_TYPE m_18_29__AMBOS;
+    BASE_TYPE m_30_39__HR;
+    BASE_TYPE m_30_39__LR;
+    BASE_TYPE m_30_39__AMBOS;
+    BASE_TYPE m_40_65__HR;
+    BASE_TYPE m_40_65__LR;
+    BASE_TYPE m_40_65__AMBOS;
     BASE_TYPE m_meanDuration_H_16_18;
     BASE_TYPE m_meanDuration_H_6_11;
     BASE_TYPE m_meanDuration_M_16_18;
@@ -153,8 +153,10 @@ public:
     BASE_TYPE m_proteccion_de_vacuna_HR;
     BASE_TYPE m_proteccion_de_vacuna_LR;
     BASE_TYPE m_homosexuales;
-    BASE_TYPE m_verrugable;
-    BASE_TYPE m_oncogenico;
+    BASE_TYPE m_valor_1_HR;
+    BASE_TYPE m_valor_2_HR;
+    BASE_TYPE m_valor_1_LR;
+    BASE_TYPE m_valor_2_LR;
     //Vacunas
     unsigned int m_mes_vacunacion_ini;
     unsigned int m_mes_vacunacion_fin;
@@ -210,8 +212,6 @@ public:
     void Soluciona(string entrada, string salida);
     unsigned int CuentaPersonas(EVENTO_CONTABLE tipo, unsigned int edad);
 	BASE_TYPE calcula_T_Asociado(CPersona &sujeto_actual);
-	BASE_TYPE asigna_T(unsigned int edad);
-	BASE_TYPE PerdidaProteccion( int t);
     vector <REGISTRO_CONTABLE_TYPE> m_contabilidad;
 	bool EsHombre();
 	int GrupoEdadHombres();
@@ -227,7 +227,6 @@ public:
 	BASE_TYPE DesviacionEdadRed(BASE_TYPE media, int contTotalParejas);
 	bool TrazaPesos();
 	BASE_TYPE PesoEdades(int edadH, int edadM);
-    bool seRecupera(CPersona p1, bool HR);
     bool asignaMujer2Homo(unsigned int p_tot_hombres, unsigned int id_nodo_homo);
     bool existe500Error();
 };

@@ -10,10 +10,12 @@ CPersona::CPersona()
     m_sexo                          = HOMBRE;
     m_relaciones_pendientes         = 0;
     m_LSP                           = 0;
-    m_estado_salud_LR               = SUSCEPTIBLE_6_11;
-    m_estado_salud_HR               = SUSCEPTIBLE_16_18;
-    m_tiempo_estado_salud_16_18     = 0;
-    m_tiempo_estado_salud_6_11      = 0;
+    m_estado_salud_LR               = SUSCEPTIBLE_LR;
+    m_estado_salud_HR               = SUSCEPTIBLE_HR;
+    m_tiempo_estado_salud_HR        = 0;
+    m_tiempo_estado_salud_LR        = 0;
+    m_tiempo_estado_salud_onco      = 0;
+    m_tiempo_estado_salud_verru     = 0;
     m_T                             = 1; //es un multiplicador que si es 1 no hace nada
     m_homosexual                    = false;
     m_verrugable                    = false;
@@ -23,15 +25,15 @@ CPersona::CPersona()
 }
 
 char ESTADO_SALUD_NOMBRE[ULTIMO_ESTADO +1 ][24] =
-   {"SUSCEPTIBLE_16_18      ",
-    "INFECTADO_16_18        ",
-    "SUSCEPTIBLE_6_11       ",
-    "INFECTADO_6_11         ",
-    "SUSCEPTIBLE_16_18_NEW  ",
-    "INFECTADO_16_18_NEW    ",
-    "SUSCEPTIBLE_6_11_NEW   ",
-    "INFECTADO_6_11_NEW     ",
-    "VACUNADA     ",
+   {"SUSCEPTIBLE_HR         ",
+    "INFECTADO_HR           ",
+    "SUSCEPTIBLE_LR         ",
+    "INFECTADO_LR           ",
+    "SUSCEPTIBLE_HR_NEW     ",
+    "INFECTADO_HR_NEW       ",
+    "SUSCEPTIBLE_LR_NEW     ",
+    "INFECTADO_LR_NEW       ",
+    "VACUNADA               ",
     "ULTIMO_ESTADO          "
 	};
 
@@ -47,10 +49,12 @@ CPersona::CPersona( BASE_TYPE T,
                    SEXOSUJETO sexo,
                    unsigned int relaciones_pendientes,
                    unsigned int LSP,
-                   ESTADO_SALUD_TIPO estado_salud_6_11,
-                   ESTADO_SALUD_TIPO estado_salud_16_18,
-                   unsigned short tiempo_estado_salud_16_18,
-                   unsigned short tiempo_estado_salud_6_11,
+                   ESTADO_SALUD_TIPO estado_salud_LR,
+                   ESTADO_SALUD_TIPO estado_salud_HR,
+                   unsigned short tiempo_estado_salud_HR,
+                   unsigned short tiempo_estado_salud_LR,
+                   unsigned short tiempo_estado_salud_onco,
+                   unsigned short tiempo_estado_salud_verru,
                    bool homosexual,
                    bool verrugable,
                    bool oncogenico,
@@ -63,10 +67,12 @@ CPersona::CPersona( BASE_TYPE T,
     m_sexo                      = sexo;
     m_relaciones_pendientes     = relaciones_pendientes;
     m_LSP                       = LSP;
-    m_estado_salud_LR           = estado_salud_6_11;
-    m_estado_salud_HR           = estado_salud_16_18;
-    m_tiempo_estado_salud_16_18 = tiempo_estado_salud_16_18;
-    m_tiempo_estado_salud_6_11  = tiempo_estado_salud_6_11;
+    m_estado_salud_LR           = estado_salud_LR;
+    m_estado_salud_HR           = estado_salud_HR;
+    m_tiempo_estado_salud_HR    = tiempo_estado_salud_HR;
+    m_tiempo_estado_salud_LR    = tiempo_estado_salud_LR;
+    m_tiempo_estado_salud_onco  = tiempo_estado_salud_onco;
+    m_tiempo_estado_salud_verru = tiempo_estado_salud_verru;
     m_T                         = T;
     m_homosexual                = homosexual;
     m_verrugable                = verrugable;
