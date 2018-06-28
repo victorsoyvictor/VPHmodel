@@ -2,8 +2,9 @@
 *.depend
 *.layout
 
-#Ficheros .sol
+#Ficheros .sol y .pro
 *.sol
+*.pro
 
 #Ejecutables
 *.lin
@@ -14,3 +15,6 @@
 #Directorios release y debug
 /Release*
 /Debug*
+
+#Ficheros de texto
+*.txt
