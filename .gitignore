@@ -2,9 +2,8 @@
 *.depend
 *.layout
 
-#Ficheros .sol y .pro
+#Ficheros .sol
 *.sol
-*.pro
 
 #Ejecutables
 *.lin

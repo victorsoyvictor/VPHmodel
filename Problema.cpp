@@ -2806,7 +2806,7 @@ int cuentaDinamicaHomo = 0;
 //Cuando empieza la simulación, primero se usan unos turnos para estabilizar la red estática,
 //luego se pasa a red dinámica y se usan unos turnos para estabilizarla. Y luego se empieza a vacunar hasta el final.
 //Pero ANTES de empezar a vacunar, hay que marcar de una forma especial a los nodos infectados.
-        if (turno == m_mes_vacunacion_ini)
+        if (turno == m_mes_vacunacion_ini - 120) //modificacion 20180813 5 anios para estabilidad
         {
             cout <<"[Infecting oncogenic and warts.................]"<< endl;
             for (unsigned int persona = 0; persona < m_grafo.m_numnodos; persona++)
@@ -3071,7 +3071,7 @@ int cuentaDinamicaHomo = 0;
                 }
             }
             //20180614
-            if (turno < m_mes_vacunacion_ini)
+            if (turno < m_mes_vacunacion_ini - 120)
             {
                 //SUSCEPTIBLE ON!
                 //complies with: Efecto_Comunitario.pdf
@@ -3148,7 +3148,7 @@ int cuentaDinamicaHomo = 0;
                 }//FIN SUSCEPTIBLE 6 11
             }
             //20180614
-            if (turno >= m_mes_vacunacion_ini)
+            if (turno >= m_mes_vacunacion_ini - 120)
             {
                 if ( (sujeto_actual.m_estado_salud_HR == INFECTADO_HR) &&
                     (sujeto_actual.m_oncogenico == false) &&
